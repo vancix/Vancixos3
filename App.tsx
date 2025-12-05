@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { GoogleGenAI, LiveServerMessage, Modality } from '@google/genai';
 import { VancixState, LogEntry, Contact } from './types';
 import { createPcmBlob, decodeAudioData, base64ToUint8Array } from './utils/audioUtils';
@@ -167,7 +167,10 @@ const App: React.FC = () => {
 
             if (toolCall) {
                setState(VancixState.THINKING);
-               sessionPromise.then(session => handleToolCall(toolCall.functionCalls, session));
+               // Ensure functionCalls is defined before passing
+               if (toolCall.functionCalls) {
+                   sessionPromise.then(session => handleToolCall(toolCall.functionCalls!, session));
+               }
             }
 
             if (serverContent) {
