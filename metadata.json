@@ -1,0 +1,8 @@
+{
+  "name": "Vancix OS",
+  "description": "Advanced AI Voice Agent with Holographic UI, capable of controlling web apps, checking news in Tanzania, and managing schedules.",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ]
+}
